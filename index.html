@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simon Says | Memory Challenge</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+    <div class="bg-circle circle3"></div>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+
+            <h1>
+                <i class="fa-solid fa-brain"></i>
+                Simon Says
+            </h1>
+
+            <p>
+                Test your memory. Beat your highest score.
+            </p>
+
+        </header>
+
+        <!-- Main Layout -->
+        <section class="game-layout">
+
+            <!-- Game Board -->
+            <section class="game-board">
+
+                <div class="board">
+
+                    <button class="game-btn yellow" id="yellow"></button>
+
+                    <button class="game-btn red" id="red"></button>
+
+                    <button class="game-btn green" id="green"></button>
+
+                    <button class="game-btn blue" id="blue"></button>
+
+                </div>
+
+            </section>
+
+            <!-- Right Panel -->
+            <aside class="sidebar">
+
+                <div class="info-card">
+
+                    <span>LEVEL</span>
+
+                    <h2 id="level">0</h2>
+
+                </div>
+
+                <div class="info-card">
+
+                    <span>HIGH SCORE</span>
+
+                    <h2 id="highScore">0</h2>
+
+                </div>
+
+                <div class="info-card">
+
+                    <span>DIFFICULTY</span>
+
+                    <select id="difficulty">
+
+                        <option value="800">Easy</option>
+
+                        <option value="600" selected>Medium</option>
+
+                        <option value="400">Hard</option>
+
+                    </select>
+
+                </div>
+
+                <button id="startBtn">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Start Game
+
+                </button>
+
+            </aside>
+
+        </section>
+
+        <!-- Status Message -->
+
+        <section class="status">
+
+            <p id="message">
+
+                Click <strong>Start Game</strong> to begin.
+
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Game Over Modal -->
+
+    <div class="modal hidden" id="gameModal">
+
+        <div class="modal-content">
+
+            <h2>🎮 Game Over</h2>
+
+            <p>Your Score</p>
+
+            <h1 id="finalScore">0</h1>
+
+            <p>Highest Score</p>
+
+            <h3 id="bestScore">0</h3>
+
+            <button id="playAgain">
+
+                Play Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

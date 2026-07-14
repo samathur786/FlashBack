@@ -1,0 +1,889 @@
+/* ==========================================================
+   SIMON SAYS v3.0
+   Author : Saurabh
+   Responsive Gaming UI
+========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        #071321,
+        #0f172a,
+        #172554,
+        #1e293b
+    );
+
+    background-size:300% 300%;
+
+    animation:gradient 18s ease infinite;
+
+}
+
+/* ================= BACKGROUND ================= */
+
+@keyframes gradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+.bg-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(110px);
+
+    opacity:.28;
+
+    animation:float 10s ease-in-out infinite;
+
+    z-index:-1;
+
+}
+
+.circle1{
+
+    width:260px;
+
+    height:260px;
+
+    background:#2563eb;
+
+    top:-80px;
+
+    left:-80px;
+
+}
+
+.circle2{
+
+    width:320px;
+
+    height:320px;
+
+    background:#9333ea;
+
+    right:-100px;
+
+    bottom:-120px;
+
+    animation-delay:2s;
+
+}
+
+.circle3{
+
+    width:220px;
+
+    height:220px;
+
+    background:#14b8a6;
+
+    left:50%;
+
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    animation-delay:4s;
+
+}
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-25px);
+
+    }
+
+}
+
+/* ================= MAIN CARD ================= */
+
+.container{
+
+    width:min(94vw,1100px);
+
+    padding:2rem;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.45);
+
+}
+
+/* ================= HEADER ================= */
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:2rem;
+
+}
+
+.header h1{
+
+    font-size:clamp(2.2rem,4vw,3.7rem);
+
+    font-weight:700;
+
+}
+
+.header h1 i{
+
+    color:#60a5fa;
+
+    margin-right:10px;
+
+}
+
+.header p{
+
+    margin-top:.5rem;
+
+    color:#94a3b8;
+
+    font-size:1rem;
+
+}
+
+/* ================= LAYOUT ================= */
+
+.game-layout{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:2rem;
+
+    align-items:center;
+
+}
+
+/* ================= BOARD ================= */
+
+.game-board{
+
+    width:100%;
+
+    max-width:520px;
+
+    margin:auto;
+
+    aspect-ratio:1;
+
+    padding:1.5rem;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+        inset 0 0 25px rgba(255,255,255,.04),
+
+        0 20px 45px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+}
+
+.game-board:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/* ================= BUTTON GRID ================= */
+
+.board{
+
+    width:100%;
+
+    height:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1.2rem;
+
+}
+
+/* ================= GAME BUTTON ================= */
+
+.game-btn{
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.25s;
+
+    box-shadow:
+
+        inset 0 -12px 18px rgba(0,0,0,.25),
+
+        0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.game-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:35%;
+
+    height:18%;
+
+    top:12%;
+
+    left:18%;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    filter:blur(4px);
+
+}
+
+.game-btn:hover{
+
+    transform:translateY(-5px) scale(1.03);
+
+}
+
+.game-btn:active{
+
+    transform:scale(.95);
+
+}
+
+.yellow{
+
+    background:#FFD93D;
+
+}
+
+.red{
+
+    background:#FF4D4D;
+
+}
+
+.green{
+
+    background:#22C55E;
+
+}
+
+.blue{
+
+    background:#3B82F6;
+
+}
+
+/* ================= FLASH ================= */
+
+.flash{
+
+    animation:flash .28s ease;
+
+}
+
+@keyframes flash{
+
+    50%{
+
+        transform:scale(.92);
+
+        filter:brightness(180%);
+
+        box-shadow:
+
+        0 0 25px white,
+
+        0 0 60px white;
+
+    }
+
+}
+
+/* ==========================================================
+                    SIDEBAR
+========================================================== */
+
+.sidebar{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.2rem;
+
+}
+
+.info-card{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:1.2rem;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+
+}
+
+.info-card span{
+
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:.9rem;
+
+    letter-spacing:1px;
+
+}
+
+.info-card h2{
+
+    margin-top:.45rem;
+
+    font-size:2.2rem;
+
+    color:white;
+
+}
+
+/* ==========================================================
+                DIFFICULTY
+========================================================== */
+
+#difficulty{
+
+    width:100%;
+
+    margin-top:.8rem;
+
+    padding:.85rem;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1f2937;
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    cursor:pointer;
+
+}
+
+#difficulty:hover{
+
+    background:#334155;
+
+}
+
+/* ==========================================================
+                START BUTTON
+========================================================== */
+
+#startBtn{
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:
+
+        0 15px 35px rgba(37,99,235,.35);
+
+}
+
+#startBtn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+        0 20px 45px rgba(37,99,235,.45);
+
+}
+
+#startBtn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+/* ==========================================================
+                    MESSAGE
+========================================================== */
+
+.status{
+
+    margin-top:1.8rem;
+
+    text-align:center;
+
+}
+
+#message{
+
+    color:#cbd5e1;
+
+    font-size:1rem;
+
+}
+
+/* ==========================================================
+                    MODAL
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(6px);
+
+    z-index:999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:min(90%,360px);
+
+    background:#111827;
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:2rem;
+
+    text-align:center;
+
+    animation:popup .35s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.modal-content h2{
+
+    margin-bottom:1rem;
+
+}
+
+.modal-content p{
+
+    color:#94a3b8;
+
+    margin-top:1rem;
+
+}
+
+#finalScore{
+
+    font-size:4rem;
+
+    color:#60a5fa;
+
+}
+
+#bestScore{
+
+    color:#facc15;
+
+    margin-top:.5rem;
+
+}
+
+#playAgain{
+
+    width:100%;
+
+    margin-top:2rem;
+
+    padding:1rem;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#playAgain:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ==========================================================
+                RESPONSIVE
+========================================================== */
+
+/* Compact Laptop */
+
+@media (max-height:800px){
+
+    .container{
+
+        padding:1.3rem;
+
+    }
+
+    .header{
+
+        margin-bottom:1rem;
+
+    }
+
+    .header h1{
+
+        font-size:2.6rem;
+
+    }
+
+    .game-layout{
+
+        gap:1.2rem;
+
+    }
+
+    .game-board{
+
+        max-width:400px;
+
+    }
+
+}
+
+/* Tablet */
+
+@media(max-width:900px){
+
+    body{
+
+        overflow:auto;
+
+        padding:20px;
+
+    }
+
+    .container{
+
+        width:100%;
+
+    }
+
+    .game-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sidebar{
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:1rem;
+
+    }
+
+    #startBtn{
+
+        grid-column:1/-1;
+
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    body{
+
+        overflow:auto;
+
+        padding:15px;
+
+    }
+
+    .container{
+
+        padding:1rem;
+
+    }
+
+    .header h1{
+
+        font-size:2rem;
+
+    }
+
+    .header p{
+
+        font-size:.9rem;
+
+    }
+
+    .game-board{
+
+        max-width:320px;
+
+        padding:1rem;
+
+    }
+
+    .board{
+
+        gap:.9rem;
+
+    }
+
+    .sidebar{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* Small Phones */
+
+@media(max-width:380px){
+
+    .game-board{
+
+        max-width:280px;
+
+    }
+
+}
+
+/* ==========================================================
+            PREMIUM HOVER GLOW
+========================================================== */
+
+.yellow:hover{
+
+    box-shadow:
+
+        0 0 20px #FFD93D,
+
+        0 0 60px rgba(255,217,61,.45);
+
+}
+
+.red:hover{
+
+    box-shadow:
+
+        0 0 20px #FF4D4D,
+
+        0 0 60px rgba(255,77,77,.45);
+
+}
+
+.green:hover{
+
+    box-shadow:
+
+        0 0 20px #22C55E,
+
+        0 0 60px rgba(34,197,94,.45);
+
+}
+
+.blue:hover{
+
+    box-shadow:
+
+        0 0 20px #3B82F6,
+
+        0 0 60px rgba(59,130,246,.45);
+
+}
+
+/* Smooth Fade */
+
+.container{
+
+    animation:fadeIn .8s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
